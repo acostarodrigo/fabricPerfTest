@@ -29,10 +29,10 @@ const path = require('path');
 describe('PerfTestContract-perfTest@0.0.1' , () => {
 
     const homedir = os.homedir();
-    const walletPath = path.join(homedir, '.fabric-vscode', 'wallets', 'local_fabric_wallet');
+    const walletPath = path.join(homedir, '.fabric-vscode', 'wallets', 'Issuer');
     const gateway = new fabricNetwork.Gateway();
     const wallet = new fabricNetwork.FileSystemWallet(walletPath);
-    const identityName = 'admin';
+    const identityName = 'issuer';
     let connectionProfile;
 
     before(async () => {
@@ -85,12 +85,14 @@ describe('PerfTestContract-perfTest@0.0.1' , () => {
     describe('createPerfTest', () =>{
         it('should submit createPerfTest transaction', async () => {
             // TODO: Update with parameters of transaction
-            const args = [];
+            const value = {name: 'rodrigo'};
+            const args = [JSON.stringify(value)];
 
             const response = await SmartContractUtil.submitTransaction('PerfTestContract', 'createPerfTest', args, gateway); // Returns buffer of transaction return value
+            console.log(response.toString('utf8'))
             // TODO: Update with return value of transaction
             // assert.equal(JSON.parse(response.toString()), undefined);
-        }).timeout(10000);
+        }).timeout(100000);
     });
 
     describe('readPerfTest', () =>{
