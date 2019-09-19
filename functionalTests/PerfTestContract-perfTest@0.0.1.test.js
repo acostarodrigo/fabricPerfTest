@@ -109,12 +109,12 @@ describe('PerfTestContract-perfTest@0.0.1' , () => {
     describe('updatePerfTest', () =>{
         it('should submit updatePerfTest transaction', async () => {
             // TODO: Update with parameters of transaction
-            const args = [];
+            const args = ['884634f4-f68e-4bcd-bfbb-d71f70bb28b4','rodrigo5'];
 
             const response = await SmartContractUtil.submitTransaction('PerfTestContract', 'updatePerfTest', args, gateway); // Returns buffer of transaction return value
             // TODO: Update with return value of transaction
             // assert.equal(JSON.parse(response.toString()), undefined);
-        }).timeout(10000);
+        }).timeout(1000000);
     });
 
     describe('deletePerfTest', () =>{
